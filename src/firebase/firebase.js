@@ -20,26 +20,8 @@ signInWithEmailAndPassword(auth, email, password)
     console.log("Deu errado!!")
     // ..
   });
-}
+};
 
-
-/*function entrar (){
-  const auth = null;
-firebase.auth().createUserWithEmailAndPassword(
-auth, document.getElementById(email).value, 
-document.getElementById(password).value)
-
-.then(function(user){
-  // Signed in 
-  auth = user;
-  console.log("Deu certo!!")
-  // ...
-  document.getElementById(email).value = ""
-  document.getElementById(password).value = ""
-}).catch(function(error) {
-  
-  console.log("Deu errado!!")
-  // ..
+const docRef = await addDoc(collection(db, posts), {
+  texto: "mensgaem"
 });
-}
-*/
