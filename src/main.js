@@ -11,6 +11,9 @@ const init = () => {
       case " ":
         main.appendChild(home());
         break;
+      case "#cadastro":
+        main.appendChild(cadastro());
+        break;  
       case "#feed":
         main.appendChild(feed());
         break;
@@ -21,6 +24,7 @@ const init = () => {
 }
 
 window.addEventListener("load", () =>{
+  window.location.hash = "";
   main.appendChild(home());
   init();
 })

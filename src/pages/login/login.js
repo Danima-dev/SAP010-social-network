@@ -1,3 +1,4 @@
+import { entrar} from '../../firebase/firebase.js'
 // aqui serão criado os templates
 
 export default () => {
@@ -18,8 +19,8 @@ export default () => {
         
         <input id="email" type="text" name="email" placeholder="Seu email..."/>
         
-        <input type="password" name="senha" placeholder="Sua senha..."/>
-        <button type="submit">ENTRAR</button>
+        <input id="password" type="password" name="senha" placeholder="Sua senha..."/>
+        <button id="botao" type="submit">ENTRAR</button>
       </form>
     </div>
     `;
@@ -28,13 +29,20 @@ export default () => {
     container.innerHTML = template
   
     
+
+    const botao = container.querySelector('#botao')
+
+    botao.addEventListener('click', (event) =>{
+      event.preventDefault()
+      const email = container.querySelector('#email').value
+      const senha = container.querySelector('#password').value
+      console.log('Testando botão', email, senha)
+      entrar(email, senha)
+    })
+    
     return container;
     
   }
 
-  /*const email = document.getElementById('email')
-
-    email.addEventListener('focus', ()=>{
-      email.style.borderColor = "#B31F85";
-    })
-  */
+  
+    
