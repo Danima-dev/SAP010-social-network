@@ -15,7 +15,16 @@ export default () => {
       </div>
     `;
 
+    const cadastroBotao = container.querySelector('#botao-cadastrar');
+    cadastroBotao.addEventListener('click', (event) => {
+      event.preventDefault()
+      const nome = container.querySelector('#nome').value
+      const email = container.querySelector('#email').value
+      const senha = container.querySelector('#password').value
+      console.log('Testando botao', )
+    })
 
+  
     container.innerHTML = template
   
     
