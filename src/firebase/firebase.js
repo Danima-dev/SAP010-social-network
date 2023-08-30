@@ -22,6 +22,4 @@ signInWithEmailAndPassword(auth, email, password)
   });
 };
 
-const docRef = await addDoc(collection(db, posts), {
-  texto: "mensgaem"
-});
+o

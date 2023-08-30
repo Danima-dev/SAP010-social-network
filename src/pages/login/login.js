@@ -44,9 +44,5 @@ export default () => {
     
   }
 
-  /*const email = document.getElementById('email')
-
-    email.addEventListener('focus', ()=>{
-      email.style.borderColor = "#B31F85";
-    })
-  */
+  
+    

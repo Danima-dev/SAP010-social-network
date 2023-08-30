@@ -1,0 +1,13 @@
+.formulario-cadastro form{
+    display: flex;
+    flex-direction: column;
+    opacity: 0.9;
+    align-items: center;
+    background-color: #D4C6D0;
+    max-width: 500px;
+    width: 45%;
+    height: 340px;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

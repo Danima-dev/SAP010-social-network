@@ -19,6 +19,11 @@ export default () => {
       console.log('Testando botao', mensagem)
       addDoc(db, posts)
     })
+
+    /*const docRef = await addDoc(collection(db, posts), {
+  texto: "mensgaem"
+});
+*/
     return container;
   }
 
