@@ -5,7 +5,7 @@ export default () => {
   
     const template = `
       <div class="cadastro">
-        <form class="formulario-cadastro">
+        <form >
 
           <h2>Cadastro</h2>
           <input id="nome" type="text" placeholder="Seu nome completo"/>
@@ -16,6 +16,8 @@ export default () => {
         </form>
       </div>
     `;
+
+    container.innerHTML = template
 
     const cadastroBotao = container.querySelector('#botao-cadastrar');
     cadastroBotao.addEventListener('click', (event) => {
@@ -28,7 +30,7 @@ export default () => {
     })
 
   
-    container.innerHTML = template
+    
   
     
     

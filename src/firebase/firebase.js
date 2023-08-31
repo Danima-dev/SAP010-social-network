@@ -23,7 +23,7 @@ signInWithEmailAndPassword(auth, email, password)
 };
 
 export function cadastrar (name, email, password){
-createUserWithEmailAndPassword(auth, name, email, password)
+createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;

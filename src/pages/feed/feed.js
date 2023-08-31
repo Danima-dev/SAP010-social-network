@@ -1,4 +1,6 @@
-import { addDoc } from "firebase/firestore";
+import { addDoc, collection, getDoc, getDocs } from "firebase/firestore";
+import { db} from '../../firebase/firebase.config'
+
 
 export default () => {
     const container = document.createElement('div');
@@ -17,13 +19,20 @@ export default () => {
       event.preventDefault()
       const mensagem = container.querySelector('#campo-de-mensagem').value
       console.log('Testando botao', mensagem)
-      addDoc(db, posts)
+        addDoc(collection(db, "postagem"), {
+        texto: mensagem
+      }).then(()=>{
+        lista()
+      })
     })
 
-    /*const docRef = await addDoc(collection(db, posts), {
-  texto: "mensgaem"
-});
-*/
+    function lista (){
+      
+      const listandoPostagem = getDocs(collection(db, "postagem"))
+      console.log(listandoPostagem)
+    }
+    lista()
+
     return container;
   }
 

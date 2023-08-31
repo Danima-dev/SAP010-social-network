@@ -1,5 +1,6 @@
 import home from "./pages/login/login.js";
 import feed from "./pages/feed/feed.js";
+import cadastro from "./pages/cadastro/cadastro.js";
 
 const main = document.querySelector('#root');
 
