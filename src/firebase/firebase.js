@@ -1,6 +1,7 @@
 import {auth, db} from './firebase.config'
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword,  } from "firebase/auth";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+
 
 
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,3 +36,5 @@ createUserWithEmailAndPassword(auth, email, password)
     // ..
   });
 }
+
+  

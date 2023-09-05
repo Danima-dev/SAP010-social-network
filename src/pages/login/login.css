@@ -34,7 +34,7 @@ form input[type=text],
 form input[type=password]{
   background-color: #E9E7E6;
   width: 70%;
-  height: 35px;
+  height: 40px;
   border: none;
   border-radius: 5px;
   padding-left: 10px;
@@ -50,6 +50,10 @@ form input[type=password]:focus {
   outline: 0;
 }
 
+a {
+  text-align: center;
+  color: black;
+}
 
 button {
   width: 40%;
