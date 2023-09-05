@@ -16,13 +16,28 @@ export default () => {
     container.innerHTML = template
   
     const button = container.querySelector('#postar-botao');
+    const campoDeMensagem = container.querySelector('#campo-de-mensagem');
+    const listaDePost = container.querySelector('#lista-de-posts');
+    
     button.addEventListener('click', (event) => {
-      event.preventDefault()
-      const mensagem = container.querySelector('#campo-de-mensagem').value
-      console.log('Testando botao', mensagem)
-        addDoc(collection(db, "postagem"), {
-        texto: mensagem
-      }).then(()=>{
+      event.preventDefault();
+      const mensagem = campoDeMensagem.value;
+      console.log('Testando botao', mensagem);
+
+      try {
+        await addDoc(collection(db, "postagem"), {
+          texto: mensagem
+      });
+
+        campoDeMensagem.value = '';
+        
+        await listaPosts ();
+        } catch (error){
+          console.error('erro ao fazer o post', error);
+        }
+      });
+        
+      /*}).then(()=>{
          lista ()
       })
     })
@@ -44,7 +59,25 @@ export default () => {
       })
      return post;
     }
+*/
+    async function listaPosts (){
+      listaDePost.innerHTML = '';
 
+      try {
+
+        const imprimirPost = await getDocs (collection(db, 'postagem'));
+
+        imprimirPost.forEach((doc) => {
+          const post = doc.data();
+          const elementoPost = document.createElement('div');
+          elementoPost.textContent = post.texto;
+          listaDePost.appendChild(elementoPost);
+        });
+      } catch (error){
+        console.error('erro ao listar post', error);
+      }
+    }
+      listaPosts();
     return container;
   }
 

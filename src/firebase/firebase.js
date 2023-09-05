@@ -7,19 +7,19 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 export function entrar (email, password){
-signInWithEmailAndPassword(auth, email, password)
+return signInWithEmailAndPassword(auth, email, password)
 
 .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
     console.log("Deu certo!!")
-    // ...
+    return user;
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log("Deu errado!!")
-    // ..
+    throw error;
   });
 };
 
