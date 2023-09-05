@@ -1,4 +1,6 @@
-import { addDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db} from '../../firebase/firebase.config'
+
 
 export default () => {
     const container = document.createElement('div');
@@ -9,6 +11,7 @@ export default () => {
       <input id="campo-de-mensagem" placeholder="Que tal compartilhar experiências sobre suas viagens?"/>
       <button id="postar-botao" type="submit">postar</button>
     </div> 
+    <div id="lista-de-posts"></div>
     `;
     container.innerHTML = template
   
@@ -17,13 +20,31 @@ export default () => {
       event.preventDefault()
       const mensagem = container.querySelector('#campo-de-mensagem').value
       console.log('Testando botao', mensagem)
-      addDoc(db, posts)
+        addDoc(collection(db, "postagem"), {
+        texto: mensagem
+      }).then(()=>{
+         lista ()
+      })
     })
 
-    /*const docRef = await addDoc(collection(db, posts), {
-  texto: "mensgaem"
-});
-*/
+    
+    lista()
+
+    function lista (){
+      const post = []
+      getDocs(collection(db, "postagem")).then((banana)=>{
+    
+       banana.forEach((doc) =>{
+        post.push(doc.data())
+        
+       })
+       console.log(post);
+      const elementoLista = container.querySelector("#lista-de-posts") 
+       elementoLista.innerHTML = post
+      })
+     return post;
+    }
+
     return container;
   }
 

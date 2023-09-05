@@ -18,8 +18,8 @@ export default () => {
         <h2>Login</h2>
         
         <input id="email" type="text" name="email" placeholder="Seu email..."/>
-        
         <input id="password" type="password" name="senha" placeholder="Sua senha..."/>
+        <a href="http://127.0.0.1:5173/#cadastro">Criar nova conta</a>
         <button id="botao" type="submit">ENTRAR</button>
       </form>
     </div>
