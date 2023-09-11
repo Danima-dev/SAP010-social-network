@@ -65,10 +65,10 @@ export default () => {
 
       try {
 
-        const imprimirPost = await getDocs (collection(db, 'postagem'));
+        const imprimirPost = await getDocs(collection(db, 'postagem'));
 
-        imprimirPost.forEach((doc) => {
-          const post = doc.data();
+        imprimirPost.forEach((documento) => {
+          const post = documento.data();
           const elementoPost = document.createElement('div');
           elementoPost.classList.add('posts');
           elementoPost.innerHTML = `${post.texto} <button class="excluir-botao" post-id= "${doc.id}"> excluir </button> `
@@ -80,7 +80,7 @@ export default () => {
             console.log(idPost, 'post excluido');
 
             try {
-              await deleteDoc(doc(db, 'postagem', idPost));
+              await deleteDoc (doc(db, 'postagem', idPost));
               elementoPost.remove();
       } catch (error){
         console.error('erro ao excluir post', error);
@@ -90,6 +90,7 @@ export default () => {
 } catch (error){
         console.error('erro ao listar post', error);
       }
+
     }
       listaPosts();
     return container;
