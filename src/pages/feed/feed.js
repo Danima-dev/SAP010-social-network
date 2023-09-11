@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs } from "firebase/firestore";
 import { db} from '../../firebase/firebase.config'
 
 
@@ -75,13 +75,18 @@ export default () => {
           listaDePost.appendChild(elementoPost);
           elementoPost.addEventListener( 'click', async () => {
             
-            const botao = elementoPost.querySelector('.excluir-botao').getAttribute('post-id');
-            console.log(botao, 'post excluido');
-          })
-        });
+           // const botao = elementoPost.querySelector('.excluir-botao').getAttribute('post-id');
+           const idPost = doc.id;
+            console.log(idPost, 'post excluido');
+
+            try {
+              await deleteDoc(doc(db, 'postagem', idPost));
+              elementoPost.remove();
       } catch (error){
         console.error('erro ao listar post', error);
+
       }
+
     }
       listaPosts();
     return container;
