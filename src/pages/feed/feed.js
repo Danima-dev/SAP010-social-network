@@ -7,11 +7,11 @@ export default () => {
   
     const template = `
     <h2>Seja bem vinda!</h2>
-    <div class="post">
       <input id="campo-de-mensagem" placeholder="Que tal compartilhar experiências sobre suas viagens?"/>
       <button id="postar-botao" type="submit">postar</button>
-    </div> 
-    <div id="lista-de-posts"></div>
+    
+    <div id="lista-de-posts">
+    </div>
     `;
     container.innerHTML = template
   
@@ -19,7 +19,7 @@ export default () => {
     const campoDeMensagem = container.querySelector('#campo-de-mensagem');
     const listaDePost = container.querySelector('#lista-de-posts');
     
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', async (event) => {
       event.preventDefault();
       const mensagem = campoDeMensagem.value;
       console.log('Testando botao', mensagem);
@@ -31,7 +31,7 @@ export default () => {
 
         campoDeMensagem.value = '';
         
-        await listaPosts ();
+        await listaPosts();
         } catch (error){
           console.error('erro ao fazer o post', error);
         }
@@ -70,8 +70,13 @@ export default () => {
         imprimirPost.forEach((doc) => {
           const post = doc.data();
           const elementoPost = document.createElement('div');
-          elementoPost.textContent = post.texto;
+          elementoPost.classList.add('posts');
+          elementoPost.innerHTML = `${post.texto} <button id="excluir-botao"> excluir </button> `
           listaDePost.appendChild(elementoPost);
+          elementoPost.addEventListener( 'click', async () => {
+            const botao = elementoPost.value
+            console.log(botao, 'post excluido');
+          })
         });
       } catch (error){
         console.error('erro ao listar post', error);

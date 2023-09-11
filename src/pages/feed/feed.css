@@ -1,9 +1,28 @@
-.post{
+#campo-de-mensagem{
     display: flex;
-    justify-content: center;
-    height: 345px;
+    align-content: center;
+    flex-direction: column;
+    width: 330px;
+    height: 160px;
+    border-radius: 10px;
+    border: none;
+    background-color: #f5eff3;
+    
 }
 
+.posts{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 330px;
+  height: 160px;
+  border: none;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #f5eff3;
+}
 input{
   
 }
@@ -13,5 +32,9 @@ h2{
 }
 
 #postar-botao{
-    width: 40%;
+    width: 20%;
+    height: 25px;
+    margin-top: 10px;
+    align-items: center;
+    margin-bottom: 10px;
 }
