@@ -71,10 +71,11 @@ export default () => {
           const post = doc.data();
           const elementoPost = document.createElement('div');
           elementoPost.classList.add('posts');
-          elementoPost.innerHTML = `${post.texto} <button id="excluir-botao"> excluir </button> `
+          elementoPost.innerHTML = `${post.texto} <button class="excluir-botao" post-id= "${doc.id}"> excluir </button> `
           listaDePost.appendChild(elementoPost);
           elementoPost.addEventListener( 'click', async () => {
-            const botao = elementoPost.value
+            
+            const botao = elementoPost.querySelector('.excluir-botao').getAttribute('post-id');
             console.log(botao, 'post excluido');
           })
         });
