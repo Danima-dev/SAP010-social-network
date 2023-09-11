@@ -1,6 +1,6 @@
 import {auth, db} from './firebase.config'
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword,  } from "firebase/auth";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc } from "firebase/firestore";
 
 
 

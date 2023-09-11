@@ -83,10 +83,13 @@ export default () => {
               await deleteDoc(doc(db, 'postagem', idPost));
               elementoPost.remove();
       } catch (error){
-        console.error('erro ao listar post', error);
-
+        console.error('erro ao excluir post', error);
       }
-
+    });
+  });
+} catch (error){
+        console.error('erro ao listar post', error);
+      }
     }
       listaPosts();
     return container;
