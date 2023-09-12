@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db} from '../../firebase/firebase.config'
 
 
@@ -7,11 +7,11 @@ export default () => {
   
     const template = `
     <h2>Seja bem vinda!</h2>
-    <div class="post">
       <input id="campo-de-mensagem" placeholder="Que tal compartilhar experiências sobre suas viagens?"/>
       <button id="postar-botao" type="submit">postar</button>
-    </div> 
-    <div id="lista-de-posts"></div>
+    
+    <div id="lista-de-posts">
+    </div>
     `;
     container.innerHTML = template
   
@@ -19,7 +19,7 @@ export default () => {
     const campoDeMensagem = container.querySelector('#campo-de-mensagem');
     const listaDePost = container.querySelector('#lista-de-posts');
     
-    button.addEventListener('click', (event) => {
+    button.addEventListener('click', async (event) => {
       event.preventDefault();
       const mensagem = campoDeMensagem.value;
       console.log('Testando botao', mensagem);
@@ -31,7 +31,7 @@ export default () => {
 
         campoDeMensagem.value = '';
         
-        await listaPosts ();
+        await listaPosts();
         } catch (error){
           console.error('erro ao fazer o post', error);
         }
@@ -65,17 +65,32 @@ export default () => {
 
       try {
 
-        const imprimirPost = await getDocs (collection(db, 'postagem'));
+        const imprimirPost = await getDocs(collection(db, 'postagem'));
 
-        imprimirPost.forEach((doc) => {
-          const post = doc.data();
+        imprimirPost.forEach((post) => {
+          const post = post.data();
           const elementoPost = document.createElement('div');
-          elementoPost.textContent = post.texto;
+          elementoPost.classList.add('posts');
+          elementoPost.innerHTML = `${post.texto} <button class="excluir-botao" post-id= "${post.id}"> excluir </button> `
           listaDePost.appendChild(elementoPost);
-        });
+          elementoPost.querySelector('.excluir-botao').addEventListener( 'click', async () => {
+            
+           // const botao = elementoPost.querySelector('.excluir-botao').getAttribute('post-id');
+           const idPost = post.id;
+            console.log(idPost, 'post excluido');
+
+            try {
+              await deleteDoc (doc(db, 'postagem', idPost));
+              elementoPost.remove();
       } catch (error){
+        console.error('erro ao excluir post', error);
+      }
+    });
+  });
+} catch (error){
         console.error('erro ao listar post', error);
       }
+
     }
       listaPosts();
     return container;
