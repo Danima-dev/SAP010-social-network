@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db} from '../../firebase/firebase.config'
 
 
@@ -67,16 +67,16 @@ export default () => {
 
         const imprimirPost = await getDocs(collection(db, 'postagem'));
 
-        imprimirPost.forEach((documento) => {
-          const post = documento.data();
+        imprimirPost.forEach((post) => {
+          const post = post.data();
           const elementoPost = document.createElement('div');
           elementoPost.classList.add('posts');
-          elementoPost.innerHTML = `${post.texto} <button class="excluir-botao" post-id= "${doc.id}"> excluir </button> `
+          elementoPost.innerHTML = `${post.texto} <button class="excluir-botao" post-id= "${post.id}"> excluir </button> `
           listaDePost.appendChild(elementoPost);
-          elementoPost.addEventListener( 'click', async () => {
+          elementoPost.querySelector('.excluir-botao').addEventListener( 'click', async () => {
             
            // const botao = elementoPost.querySelector('.excluir-botao').getAttribute('post-id');
-           const idPost = doc.id;
+           const idPost = post.id;
             console.log(idPost, 'post excluido');
 
             try {

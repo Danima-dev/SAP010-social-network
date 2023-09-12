@@ -25,7 +25,7 @@ export default () => {
       const name = container.querySelector('#nome').value
       const email = container.querySelector('#email').value
       const password = container.querySelector('#password').value
-      console.log('Testando botao', )
+      window.alert('usuário cadastrado com sucesso!')
       cadastrar(name, email, password)
     })
 
