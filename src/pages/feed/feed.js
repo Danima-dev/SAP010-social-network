@@ -67,11 +67,11 @@ export default () => {
 
         const imprimirPost = await getDocs(collection(db, 'postagem'));
 
-        imprimirPost.forEach((post) => {
-          const post = post.data();
+        imprimirPost.forEach(async (post) => {
+          const postFeed = post.data();
           const elementoPost = document.createElement('div');
           elementoPost.classList.add('posts');
-          elementoPost.innerHTML = `${post.texto} <button class="excluir-botao" post-id= "${post.id}"> excluir </button> `
+          elementoPost.innerHTML = `${postFeed.texto} <button class="excluir-botao" post-id= "${post.id}"> excluir </button> `
           listaDePost.appendChild(elementoPost);
           elementoPost.querySelector('.excluir-botao').addEventListener( 'click', async () => {
             
