@@ -1,0 +1,53 @@
+#campo-de-mensagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    width: 450px;
+    height: 160px;
+    margin-left: 450px;
+    border-radius: 10px;
+    border: none;
+    background-color: #f5eff3;
+    
+}
+
+.posts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  width: 650px;
+  height: 160px;
+  margin-left: 350px;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #f5eff3;
+  box-shadow: 50px;
+}
+
+h2{
+  text-align: center;  
+  margin-bottom: 15px;
+}
+
+#postar-botao{
+    width: 20%;
+    height: 25px;
+    margin-top: 5px;
+    margin-left: 530px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.excluir-botao{
+  width: 20%;
+  height: 25px;
+  margin-top: 50px;
+  margin-left: 450px;
+  align-items: center;
+  margin-bottom: 10px;
+}
