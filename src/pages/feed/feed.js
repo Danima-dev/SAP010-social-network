@@ -67,6 +67,7 @@ export default () => {
 
         const imprimirPost = await getDocs(collection(db, 'postagem'));
 
+
         imprimirPost.forEach(async (post) => {
           const postFeed = post.data();
           const elementoPost = document.createElement('div');
