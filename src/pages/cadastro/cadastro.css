@@ -1,3 +1,9 @@
+@media (max-width: 740px) {
+  .cadastro form {
+    width: unset !important; 
+  }
+}
+
 .cadastro form{
     display: flex;
     flex-direction: column;
